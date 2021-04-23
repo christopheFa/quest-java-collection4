@@ -1,3 +1,9 @@
+package fr.wildcodeschool.quest;
+
+import java.util.Comparator;
+import java.util.Map;
+import java.util.TreeMap;
+
 public class Thanos {
 
     public static void main(String[] args) {
@@ -21,10 +27,30 @@ public class Thanos {
         // Vision has a Tulip
         // Captain America has a Lily
         // Doctor Strange and Black Widow have a Violet
+        Comparator<Hero> comparator = new Comparator<>() {
+            @Override
+            public int compare(Hero hero1, Hero hero2) {
+                return hero1.getName().compareTo(hero2.getName());
+            }
+        };
+        Map<Hero,Flower> party = new TreeMap<>(comparator);
+        party.put(hulk,rose);
+        party.put(thor,rose);
+        party.put(scarletWitch,rose);
+        party.put(vision,tulip);
+        party.put(captainAmerica,lily);
+        party.put(doctorStrange,violet);
+        party.put(blackWidow,violet);
 
         // TODO 2 : Print if `begonia` is contained in the TreeMap
+        System.out.println("\n `begonia` is contained in the TreeMap : "+party.containsValue(begonia));
 
         // TODO 3 : For each hero, alphabetically, print the corresponding flower
-
+        System.out.println("\nHeroes (alphabetically) print the corresponding flower :");
+        for (Hero hero : party.keySet()) {
+            Flower flower = party.get(hero);
+             System.out.println(flower.getName());
+        }
+        
     }
 }

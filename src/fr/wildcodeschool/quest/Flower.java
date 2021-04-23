@@ -1,3 +1,5 @@
+package fr.wildcodeschool.quest;
+
 public class Flower {
 
     private String name;
